@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { useEffect} from "react";
 import "./globals.css";
 import Navbar from "@/components/main/Navbar";
-import StarsCanvas from "@/components/main/Startbackground";
+import StarsCanvas from "@/components/main/Starbackground";
 import ScrollToTop from "@/components/sub/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
