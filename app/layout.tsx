@@ -1,7 +1,7 @@
 "use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import "./globals.css";
 import Navbar from "@/components/main/Navbar";
 import StarsCanvas from "@/components/main/Starbackground";
@@ -21,16 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const defaultTitle = "Santhosh Raj - A full-stack developer ";
-  const attentionTitles = [
-    "Check out my portfolio ",
-    "Let's Build Something Awesome Together!",
-    "Need a Full-Stack Developer? Let's Talk!",
-    "Transform Your Ideas into Reality!",
-    "Crafting Scalable & Secure Web Apps!",
-    "Code. Innovate. Elevate.",
-  ];
 
   useEffect(() => {
+    const attentionTitles = [
+      "Check out my portfolio ",
+      "Let's Build Something Awesome Together!",
+      "Need a Full-Stack Developer? Let's Talk!",
+      "Transform Your Ideas into Reality!",
+      "Crafting Scalable & Secure Web Apps!",
+      "Code. Innovate. Elevate.",
+    ];
+
     let interval: NodeJS.Timeout;
 
     const handleVisibilityChange = () => {
@@ -38,8 +39,8 @@ export default function RootLayout({
         let index = 0;
         interval = setInterval(() => {
           document.title = attentionTitles[index];
-          index = (index + 1) % attentionTitles.length; 
-        }, 2000); 
+          index = (index + 1) % attentionTitles.length;
+        }, 2000);
       } else {
         clearInterval(interval);
         document.title = defaultTitle;
@@ -52,7 +53,7 @@ export default function RootLayout({
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       clearInterval(interval);
     };
-  }, []);
+  }, []); // ✅ Empty dependency array since attentionTitles is inside useEffect
 
   return (
     <html lang="en">
