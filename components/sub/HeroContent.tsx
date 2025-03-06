@@ -46,7 +46,7 @@ const HeroContent = () => {
           variants={slideInFromLeft(0.8)}
           className="text-2xl text-white font-semibold my-2 max-w-[600px] flex"
         >
-          <span className="text-white">I'm&nbsp;</span>
+          <span className="text-white">I&apos;m&nbsp;</span>
           <ReactTyped
             strings={[
               "Santhoshraj.",
