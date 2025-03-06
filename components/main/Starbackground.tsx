@@ -2,16 +2,20 @@
 
 import React, { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial} from "@react-three/drei";
-// @ts-expect-error
+import { Points, PointMaterial } from "@react-three/drei";
+// @ts-expect-error: Maath random module lacks proper TypeScript definitions.
 import * as random from "maath/random/dist/maath-random.esm";
 
-const StarBackground = (props: any) => {
-  const ref = useRef<any>();
-  
+interface StarBackgroundProps {
+  [key: string]: unknown;
+}
+
+const StarBackground = (props: StarBackgroundProps) => {
+  const ref = useRef<THREE.Group>(null);
+
   const [sphere] = useState(() => {
-    const positions = new Float32Array(5000 * 3); 
-    random.inSphere(positions, { radius: 1.2 }); 
+    const positions = new Float32Array(5000 * 3);
+    random.inSphere(positions, { radius: 1.2 });
     return positions;
   });
 
@@ -30,7 +34,7 @@ const StarBackground = (props: any) => {
           color="#fff"
           size={0.002}
           sizeAttenuation
-          depthWrite={false} 
+          depthWrite={false}
         />
       </Points>
     </group>
