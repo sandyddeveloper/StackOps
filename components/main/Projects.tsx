@@ -3,25 +3,42 @@ import React, { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import ProjectCard from "../sub/ProjectCard";
 
-
 const projectData = [
   {
-    src: "/NextWebsite.png",
-    title: "Modern Next.js Portfolio",
+    src: "/project1.png",
+    title: "Iphone Website React",
     description:
-      "A responsive and sleek portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
+      "A modern and responsive iPhone-themed website built with React and Next.js, featuring sleek animations and an intuitive UI. Tailwind CSS ensures a mobile-first design, while Framer Motion adds smooth transitions for an engaging user experience.",
   },
   {
-    src: "/CardImage.png",
-    title: "Interactive Website Cards",
+    src: "/projectpro.png",
+    title: "Aluminium Pro Django App",
     description:
-      "Dynamic and interactive card components using React and Tailwind animations.",
+      "A powerful Django-based web application designed for the aluminum manufacturing industry. It includes predictive analytics, real-time monitoring, and automated calculations for material usage, production efficiency, and profitability to enhance cost-effectiveness and sustainability",
   },
   {
-    src: "/SpaceWebsite.png",
-    title: "Space Themed Website",
+    src: "/projectecho.png",
+    title: "ECHO AI Website",
     description:
-      "A visually stunning space exploration website with animations and parallax effects.",
+      "A cutting-edge AI-powered website designed with Next.js and Tailwind CSS, featuring interactive UI elements, dynamic content, and real-time AI insights. Stunning visuals and smooth animations make the platform both futuristic and engaging.",
+  },
+  {
+    src: "/projectDevxnet.png",
+    title: "DEVxNET Web-Application",
+    description:
+      "A full-stack business management platform developed using Django and Next.js, designed for company-wide collaboration. It includes role-based authentication, real-time attendance tracking, and project management tools for efficient team coordination.",
+  },
+  {
+    src: "/projecteaser.png",
+    title: "Easer-Tacker Web-Application",
+    description:
+      "A robust task and project management web application built with React, Django, and MySQL. It features drag-and-drop task organization, team collaboration tools, and real-time status tracking to enhance workflow efficiency.",
+  },
+  {
+    src: "/projectportfolio.png",
+    title: "StackOps Portfolio Nextjs",
+    description:
+      "A beautifully crafted developer portfolio using Next.js, Tailwind CSS, and Framer Motion. It showcases skills, projects, and achievements with interactive animations, smooth transitions, and a minimalist yet powerful UI.",
   },
 ];
 
@@ -68,7 +85,7 @@ const Projects = () => {
             transition: { staggerChildren: 0.3 },
           },
         }}
-        className="h-full w-full flex flex-col md:flex-row gap-10 px-10"
+        className="h-full w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-10"
       >
         {projectData.map((project, index) => (
           <motion.div
