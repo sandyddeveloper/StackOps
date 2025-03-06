@@ -53,7 +53,7 @@ export default function RootLayout({
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       clearInterval(interval);
     };
-  }, []); // ✅ Empty dependency array since attentionTitles is inside useEffect
+  }, []); 
 
   return (
     <html lang="en">
