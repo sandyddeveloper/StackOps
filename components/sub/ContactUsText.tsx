@@ -24,7 +24,7 @@ const TextUs = () => {
       </motion.div>
       <motion.div
         variants={slideInFromRight(0.5)}
-        className='cursive text-[20px] text-gray-200 mb-10 mt-[10px] text-center'
+        className='thefont text-[20px] text-gray-200 mb-10 mt-[10px] text-center'
       >
         Feel free to reach out for collaborations, inquiries, or just a chat.
       </motion.div>
