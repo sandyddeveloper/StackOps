@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import { FaArrowRight } from "react-icons/fa"; // Importing icon
+import { FaArrowRight } from "react-icons/fa";
 
 interface Props {
   src: string;
   title: string;
   description: string;
-  techStack?: React.ReactNode[]; // Accepts an array of React elements (icons)
+  techStack?: React.ReactNode[];
 }
 
 const ProjectCard = ({ src, title, description, techStack }: Props) => {
@@ -25,8 +25,8 @@ const ProjectCard = ({ src, title, description, techStack }: Props) => {
         <p className="mt-2 text-gray-300">{description}</p>
 
         {/* Tech Stack & Button Container */}
-        <div className="flex items-center justify-between mt-4">
-          {/* Tech Stack Icons (Left Side) */}
+        <div className="flex items-center justify-between mt-4 ">
+          {/* Tech Stack Icons */}
           {techStack && (
             <div className="flex flex-wrap gap-2">
               {techStack.map((icon, index) => (
@@ -40,18 +40,18 @@ const ProjectCard = ({ src, title, description, techStack }: Props) => {
             </div>
           )}
 
-<a
-  href="#"
-  className="group flex items-center gap-2 px-6 py-2 text-white font-medium text-sm 
+          {/* View Button */}
+          <a
+            href="#"
+            className="group z-50 flex items-center gap-2 px-6 py-2 text-white font-medium text-sm 
              border-2 border-dotted border-cyan-500 rounded-lg cursor-pointer 
              transition-all duration-300 ease-in-out 
              hover:bg-cyan-500 hover:text-black hover:shadow-lg hover:border-solid 
-             hover:scale-105 hover:shadow-cyan-500/50 z-50"
->
-  View Now 
-  <FaArrowRight className="text-white transition-all duration-300 transform group-hover:translate-x-1 group-hover:text-black" />
-</a>
-
+             hover:scale-105 hover:shadow-cyan-500/50"
+          >
+            View Now
+            <FaArrowRight className="text-white transition-all duration-300 transform group-hover:translate-x-1 group-hover:text-black" />
+          </a>
         </div>
       </div>
     </div>
