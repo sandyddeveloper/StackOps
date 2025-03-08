@@ -5,11 +5,7 @@ import ProjectCard from "../sub/ProjectCard";
 import {
   FaReact,
   FaPython,
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
   FaDatabase,
-  FaNodeJs,
 } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -18,7 +14,6 @@ import {
   SiFramer,
   SiDjango,
 } from "react-icons/si";
-import { slideInFromTop } from "@/utils/motion";
 
 const projectData = [
   {
