@@ -9,6 +9,7 @@ import {
 } from "@/utils/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import { FaArrowRight } from "react-icons/fa6";
 
 const HeroContent = () => {
   return (
@@ -76,9 +77,10 @@ const HeroContent = () => {
 
         <motion.a
           variants={slideInFromLeft(1.2)}
-          className="py-3 px-6 button-primary text-center text-white cursor-pointer rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 hover:scale-105 transition-transform duration-300 max-w-[200px]"
+          className="flex items-center justify-center gap-2 py-3 px-6 button-primary text-center text-white cursor-pointer rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 hover:scale-105 transition-transform duration-300 max-w-[200px]"
+          href="#projects"
         >
-          View My Work
+          View My Work <FaArrowRight />
         </motion.a>
       </div>
 

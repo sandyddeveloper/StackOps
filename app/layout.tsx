@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/main/Navbar";
 import StarsCanvas from "@/components/main/Starbackground";
 import ScrollToTop from "@/components/sub/ScrollToTop";
+import Chatbot from "@/components/sub/Chatbot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -68,6 +69,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <ScrollToTop />
+        <Chatbot />
       </body>
     </html>
   );
