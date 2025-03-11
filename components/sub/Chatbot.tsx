@@ -45,10 +45,10 @@ const Chatbot = () => {
   }, [messages]);
 
   const botResponses = [
-    "🤖 I'm still learning! Feel free to ask me anything. 😊",
-    "🚀 That's interesting! Tell me more.",
+    "🤖 I&apos;m still learning! Feel free to ask me anything. 😊",
+    "🚀 That&apos;s interesting! Tell me more.",
     "🙌 Sounds good! What else would you like to know?",
-    "💡 I'm here to help. Ask me anything!",
+    "💡 I&apos;m here to help. Ask me anything!",
     "🔍 Let me check on that for you...",
   ];
 
@@ -88,7 +88,7 @@ const Chatbot = () => {
               isDarkMode ? "bg-gray-800 text-white border-gray-600" : "bg-white text-black border-gray-300"
             }`}
           >
-            👋 Hey, I'm Haris the chatbot! Need help?
+            👋 Hey, I&apos;m Haris the chatbot! Need help?
           </motion.div>
         )}
       </AnimatePresence>
