@@ -9,6 +9,8 @@ import { IoClose } from "react-icons/io5";
 const Chatbot = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
+  const [isOnline, setIsOnline] = useState(true);
+  const [lastSeen, setLastSeen] = useState("Just now");
   const [messages, setMessages] = useState([
     { text: "👋 Hey! I'm Haris, your AI assistant. How can I help?", sender: "bot" },
   ]);
@@ -117,22 +119,37 @@ const Chatbot = () => {
           >
             
             <div className="p-4 flex items-center justify-between border-b border-gray-400 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-3xl">
-              <div className="flex-1 flex justify-center items-center space-x-3">
-                <Image src="/logo.png" width={35} height={35} alt="chatbot" className="rounded-full border border-white" />
-                <div>
-                  <h2 className="text-lg font-semibold">🤖 Haris - AI Chat</h2>
-                  <p className="text-xs text-gray-200">Last seen: 2 mins ago</p>
-                </div>
-              </div>
-              <div className="flex space-x-3">
-                <button onClick={() => setIsDarkMode(!isDarkMode)} className="cursor-pointer">
-                  {isDarkMode ? <FaSun className="text-yellow-400 text-lg" /> : <FaMoon className="text-gray-300 text-lg" />}
-                </button>
-                <button onClick={() => setChatOpen(false)} className="cursor-pointer">
-                  <IoClose className="text-white text-2xl" />
-                </button>
-              </div>
-            </div>
+  <div className="flex-1 flex justify-center items-center space-x-3">
+    <Image
+      src="/logo.png"
+      width={35}
+      height={35}
+      alt="chatbot"
+      className="rounded-full border border-white"
+    />
+    <div>
+      <h2 className="text-lg font-semibold">Haris - AI Chat</h2>
+      <div className="flex items-center space-x-1">
+        <span className="text-xs text-gray-200">Online</span>
+        <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+      </div>
+    </div>
+  </div>
+  <div className="flex space-x-3">
+    <button onClick={() => setIsDarkMode(!isDarkMode)} className="cursor-pointer">
+      {isDarkMode ? (
+        <FaSun className="text-yellow-400 text-lg" />
+      ) : (
+        <FaMoon className="text-gray-300 text-lg" />
+      )}
+    </button>
+    <button onClick={() => setChatOpen(false)} className="cursor-pointer">
+      <IoClose className="text-white text-2xl" />
+    </button>
+  </div>
+</div>
+
+
 
     
             <div ref={chatContainerRef} className="flex-1 p-4 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400">
