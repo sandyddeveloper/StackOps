@@ -53,7 +53,7 @@ const HeroContent = () => {
               "Santhoshraj.",
               "a Full Stack Developer.",
               "a Python Developer.",
-              "a React & Django Expert.",
+              "a React and Django Expert.",
               "a Problem Solver.",
               "an Innovator.",
             ]}

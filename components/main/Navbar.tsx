@@ -18,7 +18,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "About", href: "#about-me", icon: <User size={20} /> },
+    { name: "About", href: "#hero", icon: <User size={20} /> },
     { name: "Skills", href: "#skills", icon: <Code size={20} /> },
     { name: "Projects", href: "#projects", icon: <Folder size={20} /> },
     { name: "Contact", href: "#contact", icon: <Mail size={20} /> },
@@ -43,7 +43,7 @@ const Navbar = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="w-full h-full flex items-center justify-between px-[10px]"
       >
-        <a href="#navbar" className="flex items-center">
+        <a href="#hero" className="flex items-center">
           <motion.div
             whileHover={{ rotate: 10 }}
             transition={{ type: "spring", stiffness: 100 }}

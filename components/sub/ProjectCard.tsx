@@ -7,9 +7,10 @@ interface Props {
   title: string;
   description: string;
   techStack?: React.ReactNode[];
+  link:string;
 }
 
-const ProjectCard = ({ src, title, description, techStack }: Props) => {
+const ProjectCard = ({ src, title, description, techStack, link }: Props) => {
   return (
     <div className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61] p-4">
       <Image
@@ -39,7 +40,9 @@ const ProjectCard = ({ src, title, description, techStack }: Props) => {
           )}
 
           <a
-            href="#"
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group z-48 flex items-center gap-2 px-6 py-2 text-white font-medium text-sm 
              border-2 border-dotted border-cyan-500 rounded-lg cursor-pointer 
              transition-all duration-300 ease-in-out 

@@ -3,16 +3,17 @@ import React, { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import ProjectCard from "../sub/ProjectCard";
 import { FaReact, FaPython, FaDatabase } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss, SiMysql, SiFramer, SiDjango } from "react-icons/si";
+import { SiNextdotjs, SiTailwindcss, SiMysql, SiFramer, SiDjango, SiHtml5, SiCss3, SiJavascript, SiFlask } from "react-icons/si";
 
 const projectData = [
   {
     id: 1,
     src: "/project1.png",
-    title: "Iphone Website React",
+    title: "Portfolio Website React",
     description:
-      "A modern and responsive iPhone-themed website built with React and Next.js, featuring sleek animations and an intuitive UI.",
+      "A modern and responsive dark-themed website built with React and shadcn, featuring sleek animations and an intuitive UI.",
     techStack: [<FaReact key="react" />, <SiNextdotjs key="next" />, <SiTailwindcss key="tailwind" />, <SiFramer key="framer" />],
+    link: "https://santhoshrajdev.vercel.app/",
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const projectData = [
     description:
       "A powerful Django-based web application designed for the aluminum manufacturing industry with real-time monitoring and predictive analytics.",
     techStack: [<FaPython key="python" />, <SiDjango key="django" />, <SiMysql key="mysql" />, <FaDatabase key="database" />],
+    link: "https://aluminium-pro.onrender.com/",
   },
   {
     id: 3,
@@ -29,31 +31,36 @@ const projectData = [
     description:
       "A cutting-edge AI-powered website designed with Next.js and Tailwind CSS, featuring interactive UI elements and real-time AI insights.",
     techStack: [<SiNextdotjs key="next" />, <SiTailwindcss key="tailwind" />, <SiFramer key="framer" />],
+    link: "https://echo-iq.vercel.app/",
   },
   {
     id: 4,
     src: "/projectDevxnet.png",
     title: "DEVxNET Web-Application",
     description:
-      "A full-stack management platform developed using Django, designed for company-wide collaboration.",
+      "A full-stack management platform developed using Django, designed for company-wide collaboration. It includes a variety of features including management and configuration.",
     techStack: [<SiDjango key="django" />, <SiNextdotjs key="next" />, <SiMysql key="mysql" />],
+    link: "https://devxnet.cloud",
   },
   {
     id: 5,
     src: "/projecteaser.png",
     title: "Easer-Tacker Web-Application",
     description:
-      "A robust task and project management web application built with React, Django, and MySQL.",
+      "A robust task and project management web application built with React, Django, and MySQL. This application includes the following features like tacking bugs and reporting bugs.",
     techStack: [<FaReact key="react" />, <SiDjango key="django" />, <SiMysql key="mysql" />],
+    link: "https://easertrack.devxnet.cloud/",
   },
   {
     id: 6,
     src: "/projectportfolio.png",
-    title: "StackOps Portfolio Nextjs",
+    title: "Telegram Bot Tracker",
     description:
-      "A beautifully crafted developer portfolio using Next.js, Tailwind CSS, and Framer Motion.",
-    techStack: [<SiNextdotjs key="next" />, <SiTailwindcss key="tailwind" />, <SiFramer key="framer" />],
-  },
+      "A robust Telegram bot tracking system built using Flask, HTML, CSS, and JavaScript. This platform allows users to monitor bot activity in real-time, analyze performance metrics.",
+    techStack: [<SiHtml5 key="html" />, <SiCss3 key="css" />, <SiJavascript key="js" />, <SiFlask key="flask" />],
+    link: "https://bot-tracker.vercel.app/",
+},
+
 ];
 
 const Projects = () => {

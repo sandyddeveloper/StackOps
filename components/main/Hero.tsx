@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <div className="relative flex flex-col h-full w-full overflow-hidden">
+    <div id="hero" className="relative flex flex-col h-full w-full overflow-hidden">
       <motion.div
         initial={{ y: -540, opacity: 0 }} 
         animate={{ y: 0, opacity: 1 }} 
