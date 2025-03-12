@@ -24,9 +24,7 @@ const ProjectCard = ({ src, title, description, techStack }: Props) => {
         <h1 className="text-2xl font-semibold text-white">{title}</h1>
         <p className="mt-2 text-gray-300">{description}</p>
 
-        {/* Tech Stack & Button Container */}
         <div className="flex items-center justify-between mt-4 ">
-          {/* Tech Stack Icons */}
           {techStack && (
             <div className="flex flex-wrap gap-2">
               {techStack.map((icon, index) => (
@@ -40,7 +38,6 @@ const ProjectCard = ({ src, title, description, techStack }: Props) => {
             </div>
           )}
 
-          {/* View Button */}
           <a
             href="#"
             className="group z-48 flex items-center gap-2 px-6 py-2 text-white font-medium text-sm 

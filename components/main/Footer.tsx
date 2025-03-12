@@ -11,7 +11,6 @@ const Footer = () => {
     <footer className="w-full h-full bg-transparent text-gray-200 shadow-lg p-[15px]">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
         
-        {/* Community & Chat */}
         <div>
           <h3 className="text-lg font-semibold mb-4 text-white">Community & Chat</h3>
           <ul className="space-y-3">

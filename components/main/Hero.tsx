@@ -1,4 +1,4 @@
-"use client"; // Ensure this is a client component for Framer Motion
+"use client"; 
 
 import React from "react";
 import HeroContent from "../sub/HeroContent";

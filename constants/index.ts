@@ -64,10 +64,6 @@ export const Skill_data = [
   
   ];
   
-
-  
-  
-  
   export const Frontend_skill = [
     {
       skill_name: "JWT",
