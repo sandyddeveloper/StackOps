@@ -10,7 +10,10 @@ const Chatbot = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "👋 Hey! I'm Haris, your AI assistant. How can I help?", sender: "bot" },
+    {
+      text: "Hey! I'm Haris, your AI assistant. How can I help?",
+      sender: "bot",
+    },
   ]);
   const [inputMessage, setInputMessage] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -20,17 +23,17 @@ const Chatbot = () => {
     const showTimer = setTimeout(() => {
       if (!chatOpen) {
         setShowPopup(true);
-        const hideTimer = setTimeout(() => setShowPopup(false), 5000); 
+        const hideTimer = setTimeout(() => setShowPopup(false), 5000);
         return () => clearTimeout(hideTimer);
       }
-    }, 10000); 
+    }, 10000);
 
     const interval = setInterval(() => {
       if (!chatOpen) {
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 5000);
       }
-    }, 30000); 
+    }, 30000);
 
     return () => {
       clearTimeout(showTimer);
@@ -40,7 +43,8 @@ const Chatbot = () => {
 
   useEffect(() => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
 
@@ -64,7 +68,10 @@ const Chatbot = () => {
       setTimeout(() => {
         setMessages((prev) => [
           ...prev.slice(0, -1),
-          { text: botResponses[Math.floor(Math.random() * botResponses.length)], sender: "bot" },
+          {
+            text: botResponses[Math.floor(Math.random() * botResponses.length)],
+            sender: "bot",
+          },
         ]);
       }, 1500);
     }, 1000);
@@ -76,7 +83,6 @@ const Chatbot = () => {
 
   return (
     <div className="fixed bottom-18 right-4 z-[100001] flex flex-col items-end">
-      
       <AnimatePresence>
         {showPopup && !chatOpen && (
           <motion.div
@@ -85,7 +91,9 @@ const Chatbot = () => {
             exit={{ opacity: 0, x: 20, scale: 0.9 }}
             transition={{ duration: 0.5 }}
             className={`p-3 rounded-xl shadow-lg text-sm font-medium max-w-[250px] border ${
-              isDarkMode ? "bg-gray-800 text-white border-gray-600" : "bg-white text-black border-gray-300"
+              isDarkMode
+                ? "bg-gray-800 text-white border-gray-600"
+                : "bg-white text-black border-gray-300"
             }`}
           >
             👋 Hey, I&apos;m Haris the chatbot! Need help?
@@ -93,17 +101,24 @@ const Chatbot = () => {
         )}
       </AnimatePresence>
 
-
       <motion.button
-        whileHover={{ scale: 1.1, boxShadow: "0px 4px 15px rgba(147, 51, 234, 0.6)" }}
+        whileHover={{
+          scale: 1.1,
+          boxShadow: "0px 4px 15px rgba(147, 51, 234, 0.6)",
+        }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setChatOpen(!chatOpen)}
         className="relative bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-2xl transition-all duration-300"
       >
-        <Image src="/logo.png" width={60} height={60} alt="chatbot" className="rounded-full cursor-pointer" />
+        <Image
+          src="/Logo.png"
+          width={60}
+          height={60}
+          alt="chatbot"
+          className="rounded-full cursor-pointer"
+        />
       </motion.button>
 
-    
       <AnimatePresence>
         {chatOpen && (
           <motion.div
@@ -112,41 +127,51 @@ const Chatbot = () => {
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.5 }}
             className={`w-80 h-96 rounded-3xl shadow-2xl flex flex-col overflow-hidden border ${
-              isDarkMode ? "bg-gray-900 text-white border-gray-700" : "bg-white text-black border-gray-300"
+              isDarkMode
+                ? "bg-gray-900 text-white border-gray-700"
+                : "bg-white text-black border-gray-300"
             }`}
           >
-            
-<div className="p-4 flex items-center justify-between border-b border-gray-400 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-3xl">
-  <div className="flex-1 flex justify-center items-center space-x-3">
-    <Image
-      src="/logo.png"
-      width={35}
-      height={35}
-      alt="chatbot"
-      className="rounded-full border border-white"
-    />
-    <div>
-      <h2 className="text-lg font-semibold">🤖 Haris - AI Chat</h2>
-      <div className="flex items-center space-x-1">
-        <span className="text-xs text-gray-200">Online</span>
-        <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
-      </div>
-    </div>
-  </div>
-  <div className="flex space-x-3">
-    <button onClick={() => setIsDarkMode(!isDarkMode)} className="cursor-pointer">
-      {isDarkMode ? (
-        <FaSun className="text-yellow-400 text-lg" />
-      ) : (
-        <FaMoon className="text-gray-300 text-lg" />
-      )}
-    </button>
-    <button onClick={() => setChatOpen(false)} className="cursor-pointer">
-      <IoClose className="text-white text-2xl" />
-    </button>
-  </div>
-</div>
-            <div ref={chatContainerRef} className="flex-1 p-4 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400">
+            <div className="p-4 flex items-center justify-between border-b border-gray-400 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-3xl">
+              <div className="flex-1 flex justify-center items-center space-x-3">
+                <Image
+                  src="/Logo.png"
+                  width={35}
+                  height={35}
+                  alt="chatbot"
+                  className="rounded-full border border-white"
+                />
+                <div>
+                  <h2 className="text-lg font-semibold">🤖 Haris - AI Chat</h2>
+                  <div className="flex items-center space-x-1">
+                    <span className="text-xs text-gray-200">Online</span>
+                    <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex space-x-3">
+                <button
+                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  className="cursor-pointer"
+                >
+                  {isDarkMode ? (
+                    <FaSun className="text-yellow-400 text-lg" />
+                  ) : (
+                    <FaMoon className="text-gray-300 text-lg" />
+                  )}
+                </button>
+                <button
+                  onClick={() => setChatOpen(false)}
+                  className="cursor-pointer"
+                >
+                  <IoClose className="text-white text-2xl" />
+                </button>
+              </div>
+            </div>
+            <div
+              ref={chatContainerRef}
+              className="flex-1 p-4 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400"
+            >
               {messages.map((msg, index) => (
                 <motion.div
                   key={index}
@@ -166,7 +191,6 @@ const Chatbot = () => {
               ))}
             </div>
 
-
             <div className="p-3 border-t border-gray-400 flex items-center space-x-2">
               <input
                 type="text"
@@ -174,9 +198,16 @@ const Chatbot = () => {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className={`flex-1 p-2 rounded-lg focus:outline-none ${isDarkMode ? "bg-gray-800 text-white border-gray-600" : "border border-gray-300"}`}
+                className={`flex-1 p-2 rounded-lg focus:outline-none ${
+                  isDarkMode
+                    ? "bg-gray-800 text-white border-gray-600"
+                    : "border border-gray-300"
+                }`}
               />
-              <button onClick={sendMessage} className="bg-indigo-500 text-white p-2 rounded-full shadow-md hover:bg-indigo-600 transition">
+              <button
+                onClick={sendMessage}
+                className="bg-indigo-500 text-white p-2 rounded-full shadow-md hover:bg-indigo-600 transition"
+              >
                 <FaPaperPlane />
               </button>
             </div>
