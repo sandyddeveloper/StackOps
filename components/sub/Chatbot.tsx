@@ -75,7 +75,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-18 right-4 z-50 flex flex-col items-end">
+    <div className="fixed bottom-18 right-4 z-[100001] flex flex-col items-end">
       
       <AnimatePresence>
         {showPopup && !chatOpen && (
@@ -100,7 +100,7 @@ const Chatbot = () => {
         onClick={() => setChatOpen(!chatOpen)}
         className="relative bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-2xl transition-all duration-300"
       >
-        <Image src="/chatbot.jpg" width={40} height={40} alt="chatbot" className="rounded-full" />
+        <Image src="/logo.png" width={60} height={60} alt="chatbot" className="rounded-full cursor-pointer" />
       </motion.button>
 
     
@@ -118,7 +118,7 @@ const Chatbot = () => {
             
             <div className="p-4 flex items-center justify-between border-b border-gray-400 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-3xl">
               <div className="flex-1 flex justify-center items-center space-x-3">
-                <Image src="/chatbot.jpg" width={35} height={35} alt="chatbot" className="rounded-full border border-white" />
+                <Image src="/logo.png" width={35} height={35} alt="chatbot" className="rounded-full border border-white" />
                 <div>
                   <h2 className="text-lg font-semibold">🤖 Haris - AI Chat</h2>
                   <p className="text-xs text-gray-200">Last seen: 2 mins ago</p>

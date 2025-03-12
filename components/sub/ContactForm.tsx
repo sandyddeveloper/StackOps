@@ -133,7 +133,7 @@ const ContactForm: React.FC = () => {
             className="flex-1 z-50 bg-black text-white placeholder:text-gray-600 px-6 py-3 rounded-md border-[1.5px] border-gray-200 border-opacity-15 outline-none w-full"
           />
         </div>
-        <div className="relative z-[100]">
+        <div className="z-[100]">
           <div>
             <select
               name="role"

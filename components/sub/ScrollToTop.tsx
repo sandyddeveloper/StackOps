@@ -28,7 +28,7 @@ const ScrollToTop = () => {
   };
 
   return (
-    <div className="fixed bottom-4 animate-pulse right-4 z-50 ">
+    <div className="fixed bottom-4 animate-pulse right-4 z-[100001] ">
       {isVisible && (
         <button
           onClick={ScrollToTop}
