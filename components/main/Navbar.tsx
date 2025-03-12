@@ -31,6 +31,9 @@ const Navbar = () => {
     );
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   };
+  const handleGitHubClick = () => {
+    window.open("https://github.com/sandyddeveloper", "_blank");
+  };
 
   return (
     <nav className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-50 px-5 md:px-10">
@@ -131,14 +134,17 @@ const Navbar = () => {
         </a>
       ))}
 
-      <a
-        href="https://github.com/sandydeveloper"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full flex items-center justify-center gap-3 bg-gray-900 text-gray-200 font-medium py-3 px-5 rounded-lg shadow-lg hover:bg-gray-800 transition-all duration-300 relative z-10"
-      >
-        <Github size={20} /> GitHub
-      </a>
+      <button 
+          onClick={handleGitHubClick}
+          className="relative z-50 w-full inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+          
+          <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6b7280_0%,#1f2937_50%,#6b7280_100%)]" />
+          
+          <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-gray-800 px-4 py-2 text-sm font-medium text-white backdrop-blur-3xl gap-2">
+            <Github size={18} /> 
+            GitHub
+          </span>
+        </button>
 
       <button
         onClick={handleHireMeClick}
