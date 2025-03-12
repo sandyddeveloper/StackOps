@@ -1,4 +1,4 @@
-import { Mail, ArrowRight, Github } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 
 const handleHireMeClick = () => {
   const email = "santhoshrajk1812@gmail.com";
