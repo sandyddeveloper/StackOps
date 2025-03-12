@@ -1,145 +1,121 @@
-import { Socials } from "@/constants";
+"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Menu, X, User, Code, Folder, Mail, Github } from "lucide-react";
-import { HiUser, HiLightBulb, HiFolder, HiMail } from "react-icons/hi"; // Importing icons
+import ButtonsContainer from "../sub/HiremeButton";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navLinks = [
+    { name: "About", href: "#about-me", icon: <User size={20} /> },
+    { name: "Skills", href: "#skills", icon: <Code size={20} /> },
+    { name: "Projects", href: "#projects", icon: <Folder size={20} /> },
+    { name: "Contact", href: "#contact", icon: <Mail size={20} /> },
+  ];
+
   return (
     <nav className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-50 px-5 md:px-10">
-      <div className="w-full h-full flex items-center justify-between m-auto px-[10px]">
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full h-full flex items-center justify-between px-[10px]"
+      >
+        {/* Logo */}
         <a href="#about-me" className="flex items-center">
-          <Image
-            src="/Logo.png"
-            alt="logo"
-            width={50}
-            height={50}
-            className="cursor-pointer hover:animate-slowspin"
-          />
-          <span className="font-bold ml-[10px] hidden md:block text-gray-300">
-            STACKOPS
-          </span>
+          <motion.div whileHover={{ rotate: 10 }} transition={{ type: "spring", stiffness: 100 }}>
+            <Image src="/Logo.png" alt="logo" width={50} height={50} className="cursor-pointer" />
+          </motion.div>
+          <span className="font-bold ml-[10px] hidden md:block text-gray-300">STACKOPS</span>
         </a>
 
-        <div className="hidden md:flex items-center justify-between w-[500px] h-auto border border-[#7042f861] bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200">
-          <a
-            href="#about-me"
-            className="relative flex items-center gap-2 cursor-pointer hover:text-[#ffdf6b] transition-colors group"
-          >
-            <HiUser className="text-lg text-[#ffdf6b] group-hover:text-[#ffee01]" />
-            About
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#ffee01] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-[0_0_10px_#ffee01]" />
-          </a>
+        {/* Desktop Menu */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="hidden md:flex items-center justify-between w-[550px] border border-[#7042f861] bg-[#0300149f] shadow-lg backdrop-blur-md px-6 rounded-full text-gray-200"
+        >
+          {navLinks.map((link, index) => (
+            <motion.a
+              key={index}
+              href={link.href}
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="relative cursor-pointer px-3 py-2 text-[15px] font-medium uppercase tracking-wide transition-all duration-300 hover:text-[#ffdf6b] group"
+            >
+              {link.name}
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#ffee01] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-[0_0_10px_#ffee01]" />
+            </motion.a>
+          ))}
+        </motion.div>
 
-          <a
-            href="#skills"
-            className="relative flex items-center gap-2 cursor-pointer hover:text-[#ffdf6b] transition-colors group"
-          >
-            <HiLightBulb className="text-lg text-[#ffdf6b] group-hover:text-[#ffee01]" />
-            Skills
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#ffee01] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-[0_0_10px_#ffee01]" />
-          </a>
-
-          <a
-            href="#projects"
-            className="relative flex items-center gap-2 cursor-pointer hover:text-[#ffdf6b] transition-colors group"
-          >
-            <HiFolder className="text-lg text-[#ffdf6b] group-hover:text-[#ffee01]" />
-            Projects
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#ffee01] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-[0_0_10px_#ffee01]" />
-          </a>
-
-          <a
-            href="#contact"
-            className="relative flex items-center gap-2 cursor-pointer hover:text-[#ffdf6b] transition-colors group"
-          >
-            <HiMail className="text-lg text-[#ffdf6b] group-hover:text-[#ffee01]" />
-            Contact
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#ffee01] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-[0_0_10px_#ffee01]" />
-          </a>
-        </div>
-
-        <div className="md:hidden flex items-center">
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center ">
           <button onClick={() => setIsOpen(!isOpen)} className="text-gray-300">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        <div className="hidden md:flex flex-row gap-5">
-          {Socials.map((social) => (
-            <button
-              key={social.name}
-              className="group cursor-pointer h-8 select-none rounded-lg bg-gradient-to-b from-zinc-800 via-zinc-700 to-zinc-600 px-3 text-sm leading-8 text-zinc-50 shadow-[0_-1px_0_1px_rgba(0,0,0,0.8)_inset,0_0_0_1px_rgb(9_9_11)_inset,0_0.5px_0_1.5px_#71717a_inset] hover:bg-gradient-to-b hover:from-zinc-900 hover:via-zinc-900 hover:to-zinc-700 active:shadow-[0_3px_0_0_rgba(0,0,0)_inset]"
-            >
-              <Image
-                src={social.src}
-                alt={social.name}
-                width={24}
-                height={24}
-              />
-            </button>
-          ))}
-        </div>
+        {/* Buttons (Desktop Only) */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="hidden md:flex flex-row gap-5"
+        >
+          <ButtonsContainer />
+        </motion.div>
+      </motion.div>
+
+      {/* Mobile Menu (Animated) */}
+      <AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100%" }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="fixed top-0 z-[1001] right-0 h-full w-[300px] bg-[#0a0022] shadow-xl transform transition-transform duration-300 ease-in-out md:hidden flex flex-col items-start py-8 px-6 space-y-6 text-gray-200 border-l border-[#7042f8]"
+    >
+      {/* Close Button */}
+      <div className="flex items-center justify-between w-full">
+        <button onClick={() => setIsOpen(false)} className="text-gray-300">
+          <X size={28} />
+        </button>
       </div>
 
-      <div
-        className={`fixed top-0 right-0 h-full w-[300px] bg-gradient-to-br from-black via-[#1a1a2e] to-[#0f3460] bg-opacity-90 backdrop-blur-md shadow-xl transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out md:hidden flex flex-col items-start py-8 px-6 space-y-6 text-gray-200 border-l border-[#7042f8] font-dotted`}
+      {/* Mobile Menu Links */}
+      {navLinks.map((link, index) => (
+        <a
+          key={index}
+          href={link.href}
+          className="cursor-pointer text-lg font-semibold flex items-center space-x-2 hover:text-[#ffdf6b] transition-colors"
+          onClick={() => setIsOpen(false)}
+        >
+          {link.icon} <span>{link.name}</span>
+        </a>
+      ))}
+
+      {/* GitHub Button */}
+      <a
+        href="https://github.com/sandydeveloper"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full flex items-center justify-center gap-3 bg-gray-900 text-gray-200 font-medium py-3 px-5 rounded-lg shadow-lg hover:bg-gray-800 transition-all duration-300"
       >
-        <div className="flex items-center justify-between w-full">
-          <a
-            href="mailto:your-email@example.com"
-            className="text-gray-300 hover:text-[#7042f8] transition-colors"
-          >
-            <Mail size={24} />
-          </a>
-          <a
-            href="https://github.com/your-github"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#7042f8] transition-colors"
-          >
-            <Github size={24} />
-          </a>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="text-gray-300 hover:text-[#7042f8] transition-colors"
-          >
-            <X size={32} />
-          </button>
-        </div>
-        <a
-          href="#about-me"
-          className="cursor-pointer text-lg font-semibold flex items-center space-x-2 hover:text-[#7042f8] transition-colors"
-          onClick={() => setIsOpen(false)}
-        >
-          <User size={20} /> <span>About</span>
-        </a>
-        <a
-          href="#skills"
-          className="cursor-pointer text-lg font-semibold flex items-center space-x-2 hover:text-[#7042f8] transition-colors"
-          onClick={() => setIsOpen(false)}
-        >
-          <Code size={20} /> <span>Skills</span>
-        </a>
-        <a
-          href="#projects"
-          className="cursor-pointer text-lg font-semibold flex items-center space-x-2 hover:text-[#7042f8] transition-colors"
-          onClick={() => setIsOpen(false)}
-        >
-          <Folder size={20} /> <span>Projects</span>
-        </a>
-        <a
-          href="#contact"
-          className="cursor-pointer text-lg font-semibold flex items-center space-x-2 hover:text-[#7042f8] transition-colors"
-          onClick={() => setIsOpen(false)}
-        >
-          <Mail size={20} /> <span>Contact</span>
-        </a>
-      </div>
+        <Github size={20} /> GitHub
+      </a>
+
+      {/* Hire Me Button */}
+      <ButtonsContainer />
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
     </nav>
   );
 };

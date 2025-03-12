@@ -43,7 +43,7 @@ const ProjectCard = ({ src, title, description, techStack }: Props) => {
           {/* View Button */}
           <a
             href="#"
-            className="group z-50 flex items-center gap-2 px-6 py-2 text-white font-medium text-sm 
+            className="group z-48 flex items-center gap-2 px-6 py-2 text-white font-medium text-sm 
              border-2 border-dotted border-cyan-500 rounded-lg cursor-pointer 
              transition-all duration-300 ease-in-out 
              hover:bg-cyan-500 hover:text-black hover:shadow-lg hover:border-solid 

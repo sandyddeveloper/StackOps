@@ -64,16 +64,7 @@ export const Skill_data = [
   
   ];
   
-  export const Socials = [
-    {
-      name: "Github",
-      src: "/gitwhite.png",
-    },
-    {
-      name: "Email",
-      src: "/email.png",
-    }
-  ];
+
   
   
   
