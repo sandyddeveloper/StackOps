@@ -47,10 +47,10 @@ const Chatbot = () => {
   }, [messages]);
 
   const botResponses = [
-    "🤖 I&apos;m still learning! Feel free to ask me anything. 😊",
-    "🚀 That&apos;s interesting! Tell me more.",
+    "🤖 Im still learning! Feel free to ask me anything. 😊",
+    "🚀 Thats interesting! Tell me more.",
     "🙌 Sounds good! What else would you like to know?",
-    "💡 I&apos;m here to help. Ask me anything!",
+    "💡 Im here to help. Ask me anything!",
     "🔍 Let me check on that for you...",
   ];
 
@@ -118,7 +118,7 @@ const Chatbot = () => {
             }`}
           >
             
-            <div className="p-4 flex items-center justify-between border-b border-gray-400 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-3xl">
+<div className="p-4 flex items-center justify-between border-b border-gray-400 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-3xl">
   <div className="flex-1 flex justify-center items-center space-x-3">
     <Image
       src="/logo.png"
@@ -128,7 +128,7 @@ const Chatbot = () => {
       className="rounded-full border border-white"
     />
     <div>
-      <h2 className="text-lg font-semibold">Haris - AI Chat</h2>
+      <h2 className="text-lg font-semibold">🤖 Haris - AI Chat</h2>
       <div className="flex items-center space-x-1">
         <span className="text-xs text-gray-200">Online</span>
         <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
@@ -148,10 +148,6 @@ const Chatbot = () => {
     </button>
   </div>
 </div>
-
-
-
-    
             <div ref={chatContainerRef} className="flex-1 p-4 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400">
               {messages.map((msg, index) => (
                 <motion.div
