@@ -9,8 +9,6 @@ import { IoClose } from "react-icons/io5";
 const Chatbot = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
-  const [isOnline, setIsOnline] = useState(true);
-  const [lastSeen, setLastSeen] = useState("Just now");
   const [messages, setMessages] = useState([
     { text: "👋 Hey! I'm Haris, your AI assistant. How can I help?", sender: "bot" },
   ]);
