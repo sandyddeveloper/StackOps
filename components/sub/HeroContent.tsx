@@ -24,7 +24,9 @@ const HeroContent = () => {
           className="Welcome-box py-2 px-3 border border-[#7042f88b] opacity-[0.9] flex items-center justify-center md:justify-start mx-auto md:mx-0"
         >
           <SparklesIcon className="text-[#b49bff] mr-2 h-5 w-5" />
-          <h1 className="Welcome-text text-sm">Full Stack Developer & Problem Solver</h1>
+          <h1 className="Welcome-text text-sm">
+            Full Stack Developer & Problem Solver
+          </h1>
         </motion.div>
 
         <motion.div
@@ -66,10 +68,10 @@ const HeroContent = () => {
           variants={slideInFromLeft(1)}
           className="text-lg text-gray-400 my-1 max-w-[600px] leading-relaxed mx-auto md:mx-0"
         >
-          Passionate about crafting high-quality web applications, I specialize in{" "}
-          <span className="text-white">Django, React, Flask, and MySQL</span>,
-          building scalable and efficient solutions. I thrive on solving complex
-          problems and delivering seamless digital experiences.
+          Passionate about crafting high-quality web applications, I specialize
+          in <span className="text-white">Django, React, Flask, and MySQL</span>
+          , building scalable and efficient solutions. I thrive on solving
+          complex problems and delivering seamless digital experiences.
         </motion.p>
 
         <motion.a
@@ -83,7 +85,7 @@ const HeroContent = () => {
 
       <motion.div
         variants={slideInFromRight(0.8)}
-        className="w-full h-full flex justify-center items-center mt-10 md:mt-0"
+        className="hidden md:flex w-full h-full justify-center items-center mt-10 md:mt-0"
       >
         <Image
           src="/mainIconsdark.svg"
