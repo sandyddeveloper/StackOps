@@ -93,9 +93,9 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center justify-center md:justify-start space-x-2 hover:text-primary transition cursor-pointer">
+              <a href="https://santhosh.devxnet.cloud/" className="flex items-center justify-center md:justify-start space-x-2 hover:text-primary transition cursor-pointer">
                 <RiGlobalFill className="text-xl" />
-                <span>Portfolio</span>
+                <span>Blog</span>
               </a>
             </li>
             <li>
