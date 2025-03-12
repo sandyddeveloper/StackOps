@@ -36,14 +36,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full h-[65px]  fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-[150] px-5 md:px-10">
+    <nav id="navbar" className="w-full h-[65px]  fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-[150] px-5 md:px-10">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="w-full h-full flex items-center justify-between px-[10px]"
       >
-        <a href="/" className="flex items-center">
+        <a href="#navbar" className="flex items-center">
           <motion.div
             whileHover={{ rotate: 10 }}
             transition={{ type: "spring", stiffness: 100 }}
