@@ -43,7 +43,7 @@ const Navbar = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="w-full h-full flex items-center justify-between px-[10px]"
       >
-        <a href="#about-me" className="flex items-center">
+        <a href="/" className="flex items-center">
           <motion.div
             whileHover={{ rotate: 10 }}
             transition={{ type: "spring", stiffness: 100 }}

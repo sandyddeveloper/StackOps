@@ -50,6 +50,43 @@ export default function RootLayout({
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
+    const disableDevTools = () => {
+      document.addEventListener("contextmenu", (event) => event.preventDefault());
+
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.ctrlKey && 
+          (event.key === "u" || event.key === "s" || event.key === "p" || event.key === "Shift")
+        ) {
+          event.preventDefault();
+        }
+        if (
+          event.key === "F12" ||
+          (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J" || event.key === "C"))
+        ) {
+          event.preventDefault();
+        }
+      });
+
+      const detectDevTools = () => {
+        const element = new Image();
+        Object.defineProperty(element, "id", {
+          get: function () {
+            alert("DevTools detected! Access denied.");
+            window.location.href = "https://www.google.com"; 
+            throw new Error("DevTools detected!");
+          },
+        });
+        console.log("%c", element);
+      };
+
+      const interval = setInterval(detectDevTools, 1000);
+
+      return () => clearInterval(interval);
+    };
+
+    disableDevTools();
+
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       clearInterval(interval);
