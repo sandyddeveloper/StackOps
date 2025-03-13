@@ -1,3 +1,4 @@
+import Image from "next/image";
 import BlogText from "../sub/BlogText";
 
 const BlogSection = () => {
@@ -41,7 +42,7 @@ const BlogSection = () => {
               </div>
             </div>
             <div className="relative mt-16 h-80 lg:mt-8">
-              <img
+              <Image
                 alt="Blog preview"
                 src="/appshot.png"
                 width={1824}
