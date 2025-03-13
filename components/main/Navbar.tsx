@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import ButtonsContainer from "../sub/HiremeButton";
 import { motion, AnimatePresence } from "framer-motion";
+import { RiGlobalFill } from "react-icons/ri";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +23,7 @@ const Navbar = () => {
     { name: "About", href: "#hero", icon: <User size={20} /> },
     { name: "Skills", href: "#skills", icon: <Code size={20} /> },
     { name: "Projects", href: "#projects", icon: <Folder size={20} /> },
+    { name: "Blog", href: "#blog", icon: <RiGlobalFill size={20} /> },
     { name: "Contact", href: "#contact", icon: <Mail size={20} /> },
   ];
   const handleHireMeClick = () => {

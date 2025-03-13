@@ -92,7 +92,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="https://santhosh.devxnet.cloud/" className="flex hover:text-white items-center justify-center md:justify-start space-x-2 transition cursor-pointer">
+              <a href="https://stackscripts.devxnet.cloud/" className="flex hover:text-white items-center justify-center md:justify-start space-x-2 transition cursor-pointer">
                 <RiGlobalFill className="text-xl" />
                 <span>Blog</span>
               </a>
