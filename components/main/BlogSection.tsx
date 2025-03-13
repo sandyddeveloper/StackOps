@@ -3,8 +3,7 @@ import BlogText from "../sub/BlogText";
 
 const BlogSection = () => {
     return (
-      <div className="z-50 bg-transparent">
-
+      <div className="z-50 bg-transparent" id="blog">
         <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8 ">
             <BlogText />
           <div className="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
