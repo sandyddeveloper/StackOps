@@ -33,8 +33,42 @@ const ContactForm: React.FC = () => {
     }));
   };
 
+  const validateForm = () => {
+    const { firstName, lastName, email, phoneNumber, role, message } = formData;
+
+    if (!firstName.trim() || !lastName.trim()) {
+      toast.error("First and last name are required.");
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return false;
+    }
+
+    if (phoneNumber.length < 10) {
+      toast.error("Phone number must be at least 10 digits.");
+      return false;
+    }
+
+    if (!role) {
+      toast.error("Please select a role.");
+      return false;
+    }
+
+    if (!message.trim()) {
+      toast.error("Message cannot be empty.");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
 
     const convertToRecord = (data: FormData): Record<string, string> => {
       return Object.keys(data).reduce((acc, key) => {
@@ -52,13 +86,11 @@ const ContactForm: React.FC = () => {
       )
       .then(
         (response) => {
-          // Show toast notification on success
           toast.success(
-            `Hey ${formData.firstName}! I got your message, mate. I will contact you sooner.`
+            `Hey ${formData.firstName}! Your message was sent successfully.`
           );
           console.log("SUCCESS!", response.status, response.text);
 
-          // Clear the form
           setFormData({
             firstName: "",
             lastName: "",
@@ -69,7 +101,6 @@ const ContactForm: React.FC = () => {
           });
         },
         (error) => {
-          // Show toast notification on error
           toast.error("Failed to send message. Please try again.");
           console.error("FAILED...", error);
         }
@@ -78,7 +109,6 @@ const ContactForm: React.FC = () => {
 
   return (
     <div className="bg-[#140c1c] rounded-lg p-4 sm:p-10">
-      {/* Toast Container */}
       <ToastContainer />
 
       <h1 className="text-bg text-2xl md:text-3xl lg:text-[2.5rem] font-bold">
@@ -87,93 +117,87 @@ const ContactForm: React.FC = () => {
 
       <p className="text-gray-200 mt-3 lg:text-base text-xs md:text-sm">
         Feel free to reach out if you’re looking for a developer with a keen eye
-        for detail, excellent problem-solving skills, and a love for coding. I
-        specialize in frontend and backend technologies, and I am ready to take
-        on new challenges. Let&apos;s talk about your project!
+        for detail, excellent problem-solving skills, and a love for coding.
       </p>
 
       {/* Form */}
-      <form
-        className="mt-8 block w-full overflow-hidden z-50"
-        onSubmit={handleSubmit}
-      >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+      <form className="mt-8 w-full  z-50" onSubmit={handleSubmit}>
+        <div className="flex flex-col md:flex-row gap-4">
           <input
             type="text"
             name="firstName"
             placeholder="First name"
             value={formData.firstName}
+            required
             onChange={handleChange}
-            className="flex-1 z-50 bg-black text-white placeholder:text-gray-600 px-6 py-3 rounded-md border-[1.5px] border-gray-200 border-opacity-15 outline-none w-full"
+            className="flex-1 z-50 bg-black text-white placeholder-gray-600 px-6 py-3 rounded-md border border-gray-200 outline-none w-full"
           />
           <input
             type="text"
             name="lastName"
             placeholder="Last name"
             value={formData.lastName}
+            required
             onChange={handleChange}
-            className="flex-1 z-50 bg-black text-white placeholder:text-gray-600 px-6 py-3 rounded-md border-[1.5px] border-gray-200 border-opacity-15 outline-none w-full"
+            className="flex-1 z-50 bg-black text-white placeholder-gray-600 px-6 py-3 rounded-md border border-gray-200 outline-none w-full"
           />
         </div>
-        <div className="flex mt-5 flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex mt-5 flex-col md:flex-row gap-4">
           <input
             type="email"
             name="email"
             placeholder="Email address"
             value={formData.email}
+            required
             onChange={handleChange}
-            className="flex-1 z-50 bg-black text-white placeholder:text-gray-600 px-6 py-3 rounded-md border-[1.5px] border-gray-200 border-opacity-15 outline-none w-full"
+            className="flex-1 z-50 bg-black text-white placeholder-gray-600 px-6 py-3 rounded-md border border-gray-200 outline-none w-full"
           />
           <input
             type="text"
             name="phoneNumber"
             placeholder="Phone Number"
+            required
             value={formData.phoneNumber}
             onChange={handleChange}
-            className="flex-1 z-50 bg-black text-white placeholder:text-gray-600 px-6 py-3 rounded-md border-[1.5px] border-gray-200 border-opacity-15 outline-none w-full"
+            className="flex-1 z-50 bg-black text-white placeholder-gray-600 px-6 py-3 rounded-md border border-gray-200 outline-none w-full"
           />
         </div>
-        <div className="z-[100]">
-          <div>
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              className="w-full mt-5 bg-black text-white placeholder:text-gray-600 px-4 py-3.5 rounded-md border-[1.5px] border-gray-200 border-opacity-15 outline-none relative z-[101]"
-            >
-              <option value="" disabled>
-                Select an Option
-              </option>
-              <option value="As a Client">As a Client</option>
-              <option value="As a Frontend Developer">
-                As a Frontend Developer
-              </option>
-              <option value="As a Backend Developer">
-                As a Backend Developer
-              </option>
-              <option value="As a Full Stack Developer">
-                As a Full Stack Developer
-              </option>
-            </select>
-          </div>
 
-          <textarea
-            name="message"
-            value={formData.message}
+        <div>
+          <select
+            name="role"
+            value={formData.role}
+            required
             onChange={handleChange}
-            className="w-full mt-5 bg-black text-white placeholder:text-gray-600 px-4 py-3.5 rounded-md border-[1.5px] border-gray-200 border-opacity-15 outline-none relative z-[101]"
-            rows={7}
-            placeholder="Message"
-          ></textarea>
+            className="relative w-full z-50 mt-5 bg-black text-white px-4 py-3.5 rounded-md border border-gray-200 outline-none"
+          >
+            <option value="" disabled>
+              Select an Option
+            </option>
+            <option value="As a Client">As a Client</option>
+            <option value="As a Frontend Developer">As a Frontend Developer</option>
+            <option value="As a Backend Developer">As a Backend Developer</option>
+            <option value="As a Full Stack Developer">As a Full Stack Developer</option>
+          </select>
+        </div>
 
-          <div className="mt-4">
-            <button
-              type="submit"
-              className="cursor-pointer px-8 py-3.5 bg-[#7947df] text-white hover:bg-[#5c2fb7] transition-all duration-150 rounded-full relative z-[101]"
-            >
-              Send Message
-            </button>
-          </div>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          className="relative w-full z-50 mt-5 bg-black text-white px-4 py-3.5 rounded-md border border-gray-200 outline-none"
+          rows={7}
+          required
+          placeholder="Message"
+        ></textarea>
+
+        <div className="mt-4">
+          <button
+            type="submit"
+            className="relative cursor-pointer px-8 z-50 py-3.5 bg-[#7947df] text-white hover:bg-[#5c2fb7] transition-all duration-150 rounded-full"
+          >
+            Send Message
+          </button>
         </div>
       </form>
     </div>
