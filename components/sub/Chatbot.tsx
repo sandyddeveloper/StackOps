@@ -1,20 +1,57 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaMoon, FaSun, FaPaperPlane } from "react-icons/fa";
+import { FaMoon, FaSun, FaPaperPlane, FaExpand, FaCompress } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
+
+const commands = ["/help", "/contact", "/about", "/portfolio", "/clear", "/theme", "/github", "/hireme", "/more"];
 
 const Chatbot = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [messages, setMessages] = useState<{ sender: string; text: string }[]>([]);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [messages, setMessages] = useState([{ sender: "bot", text: "Hello! How can I assist you today?" }]);
   const [inputMessage, setInputMessage] = useState("");
-  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const sendMessage = () => {
-    if (!inputMessage.trim()) return;
-    setMessages([...messages, { sender: "user", text: inputMessage }]);
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [messages]);
+
+  const sendMessage = (message: string) => {
+    const text = message.trim();
+    if (!text) return;
+
+    setMessages((prev) => [...prev, { sender: "user", text }]);
     setInputMessage("");
+
+    if (text === "/clear") {
+      setMessages([]);
+      return;
+    }
+
+    if (text === "/help") {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "Available commands:" },
+        { sender: "bot", text: commands.join(", ") },
+      ]);
+      return;
+    }
+
+    if (text === "/theme") {
+      setIsDarkMode((prev) => !prev);
+      return;
+    }
+
+    setTimeout(() => {
+      setMessages((prev) => [...prev, { sender: "bot", text: `You entered: ${text}` }]);
+    }, 1000);
   };
 
   return (
@@ -26,38 +63,36 @@ const Chatbot = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.5 }}
-            className={`w-80 h-96 rounded-3xl shadow-2xl flex flex-col overflow-hidden border backdrop-blur-md ${
-              isDarkMode ? "bg-gray-900/90 text-white border-gray-700" : "bg-white/80 text-black border-gray-300"
-            }`}
+            className={`rounded-3xl shadow-2xl flex flex-col overflow-hidden border backdrop-blur-md transition-all duration-300 ${
+              isFullscreen ? "fixed inset-0 w-full h-full z-[100002]" : "w-80 h-96"
+            } ${isDarkMode ? "bg-gray-900/90 text-white border-gray-700" : "bg-white/80 text-black border-gray-300"}`}
           >
-            <div className="p-4 flex items-center justify-between border-b border-gray-400 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-3xl">
-              <div className="flex-1 flex justify-center items-center space-x-3">
+            <div className="p-4 flex items-center justify-between border-b bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-t-3xl">
+              <div className="flex items-center space-x-3">
                 <Image src="/Logo.png" width={35} height={35} alt="chatbot" className="rounded-full border border-white" />
-                <div>
-                  <h2 className="text-lg font-semibold">🤖 Haris - AI Chat</h2>
-                  <div className="flex items-center space-x-1">
-                    <span className="text-xs text-gray-200">Online</span>
-                    <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
-                  </div>
-                </div>
+                <h2 className="text-lg font-semibold">🤖 Haris - AI Chat</h2>
               </div>
               <div className="flex space-x-3">
                 <button onClick={() => setIsDarkMode(!isDarkMode)}>
                   {isDarkMode ? <FaSun className="text-yellow-400 text-lg" /> : <FaMoon className="text-gray-300 text-lg" />}
+                </button>
+                <button onClick={() => setIsFullscreen(!isFullscreen)}>
+                  {isFullscreen ? <FaCompress className="text-white text-xl" /> : <FaExpand className="text-white text-xl" />}
                 </button>
                 <button onClick={() => setChatOpen(false)}>
                   <IoClose className="text-white text-2xl" />
                 </button>
               </div>
             </div>
-            <div ref={chatContainerRef} className="flex-1 p-4 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400">
+
+            <div ref={chatContainerRef} className="flex-1 p-4 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 flex flex-col text-sm">
               {messages.map((msg, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className={`w-fit max-w-[75%] p-3 rounded-2xl shadow-md text-sm ${
+                  className={`relative max-w-fit px-4 py-2 rounded-xl shadow-md text-sm ${
                     msg.sender === "bot"
                       ? isDarkMode
                         ? "bg-gray-700 text-white self-start"
@@ -69,23 +104,39 @@ const Chatbot = () => {
                 </motion.div>
               ))}
             </div>
-            <div className="p-3 border-t border-gray-400 flex items-center space-x-2">
-              <input
-                type="text"
-                placeholder="Type a message..."
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                className={`flex-1 p-2 rounded-lg focus:outline-none ${
-                  isDarkMode ? "bg-gray-800 text-white border-gray-600" : "border border-gray-300"
-                }`}
-              />
-              <button onClick={sendMessage} className="bg-indigo-500 text-white p-2 rounded-full shadow-md hover:bg-indigo-600 transition">
-                <FaPaperPlane />
-              </button>
+
+            <div className="p-3 border-t flex flex-col space-y-2">
+              <div className="flex space-x-2 overflow-x-auto pb-2">
+                {commands.map((cmd) => (
+                  <button
+                    key={cmd}
+                    onClick={() => sendMessage(cmd)}
+                    className="bg-gray-300 text-black px-3 py-1 rounded-full text-xs hover:bg-gray-400 transition"
+                  >
+                    {cmd}
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="text"
+                  placeholder="Type a message..."
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && sendMessage(inputMessage)}
+                  className={`flex-1 p-2 rounded-lg focus:outline-none ${
+                    isDarkMode ? "bg-gray-800 text-white border-gray-600" : "border border-gray-300"
+                  }`}
+                />
+                <button onClick={() => sendMessage(inputMessage)} className="bg-indigo-500 text-white p-2 rounded-full shadow-md hover:bg-indigo-600 transition">
+                  <FaPaperPlane />
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
       <motion.button
         whileHover={{ scale: 1.1, boxShadow: "0px 4px 15px rgba(147, 51, 234, 0.6)" }}
         whileTap={{ scale: 0.9 }}
