@@ -44,6 +44,48 @@ const Chatbot = () => {
       return;
     }
 
+    if (text === "/contact") {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "To reach out to me, please use the following contact information:" },
+        { sender: "bot", text: "Email: santhoshrajk1812@gmail.com" },
+        { sender: "bot", text: "LinkedIn: www.linkedin.com/in/santhoshraj-dev" },
+      ])
+    }
+
+    if (text === "/about") {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "Hello! I'm your smart assistant, here to assist you with all your technical needs." },
+        { sender: "bot", text: "My name is Santhosh Raj, and I specialize in web development, AI, and automation. If you need guidance, feel free to ask!" },
+        { sender: "bot", text: "Whether it's coding help, project ideas, or troubleshooting, I'm here to make your journey smoother. Let's build something amazing together! 🚀" },
+      ]);
+    }
+
+    if (text === "/portfolio") {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "Here are some of my recent projects I've worked on:" },
+        { sender: "bot", text: "Feel free to explore my other projects on my GitHub profile: www.github.com/sandyddeveloper" },
+      ]);
+    }
+
+    if (text === "/github") {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "My GitHub profile is: www.github.com/sandyddeveloper" },
+        { sender: "bot", text: "Feel free to check out my repositories, contribute to them, or even star them if you like!⭐" },
+      ]);
+    }
+    if (text === "/hireme") {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "I'm here to help you with your project! Please provide me with the necessary details, and I'll do my best to find a suitable team for your project." },
+        { sender: "bot", text: "For example, if you're looking for a web developer with experience in React, django, and pthon, I'd be more than happy to help!" },
+      ]);
+    }
+
+  
     if (text === "/theme") {
       setIsDarkMode((prev) => !prev);
       return;
@@ -55,7 +97,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-16 right-4 z-[100001] flex flex-col items-end">
+    <div className="fixed bottom-18 right-4 z-[100001] flex flex-col items-end">
       <AnimatePresence>
         {chatOpen && (
           <motion.div
@@ -72,15 +114,15 @@ const Chatbot = () => {
                 <Image src="/Logo.png" width={35} height={35} alt="chatbot" className="rounded-full border border-white" />
                 <h2 className="text-lg font-semibold">🤖 Haris - AI Chat</h2>
               </div>
-              <div className="flex space-x-3">
+              <div className="flex space-x-3 ">
                 <button onClick={() => setIsDarkMode(!isDarkMode)}>
-                  {isDarkMode ? <FaSun className="text-yellow-400 text-lg" /> : <FaMoon className="text-gray-300 text-lg" />}
+                  {isDarkMode ? <FaSun className="text-yellow-400 text-lg cursor-pointer hover:text-gray-600" /> : <FaMoon className="text-gray-300 text-lg cursor-pointer hover:text-gray-600" />}
                 </button>
                 <button onClick={() => setIsFullscreen(!isFullscreen)}>
-                  {isFullscreen ? <FaCompress className="text-white text-xl" /> : <FaExpand className="text-white text-xl" />}
+                  {isFullscreen ? <FaCompress className="text-white text-xl cursor-pointer hover:text-gray-600" /> : <FaExpand className="text-white text-xl cursor-pointer hover:text-gray-600" />}
                 </button>
                 <button onClick={() => setChatOpen(false)}>
-                  <IoClose className="text-white text-2xl" />
+                  <IoClose className="text-white text-2xl cursor-pointer hover:text-red-400" />
                 </button>
               </div>
             </div>
