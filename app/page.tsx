@@ -1,4 +1,3 @@
-import Approach from "@/components/main/Approach";
 import BlogSection from "@/components/main/BlogSection";
 import Contact from "@/components/main/Contact";
 import Encryption from "@/components/main/Encryption";
@@ -15,7 +14,6 @@ export default function Home() {
     <Hero />
     <Skills />
     <Encryption />
-    <Approach />
     <Projects />
     <BlogSection />
     <Contact />

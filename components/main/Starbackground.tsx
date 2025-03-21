@@ -39,7 +39,7 @@ const StarBackground: React.FC<JSX.IntrinsicElements["group"]> = (props) => {
 };
 
 const StarsCanvas: React.FC = () => (
-  <div className="w-full h-auto fixed inset-0 z-[20]">
+  <div className="w-full h-auto fixed inset-0 z-[2]">
     <Canvas camera={{ position: [0, 0, 1] }}>
       <Suspense fallback={null}>
         <StarBackground />
