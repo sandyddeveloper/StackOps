@@ -1,6 +1,6 @@
 "use client"
-import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useRef } from "react";
+import { AnimatePresence, motion, useInView  } from "framer-motion";
 import { CanvasRevealEffect } from "../ui/CanvasRevealEffect";
 import ApproachText from "../sub/ApproachText";
 
@@ -8,9 +8,16 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
 }
 const Approach = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   return (
-    <section className="w-full py-20">
+    <section ref={sectionRef} className="w-full py-20">
       <ApproachText />
+      <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.6 }}
+          >
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         <Card
           title="Planning & Strategy"
@@ -54,7 +61,9 @@ const Approach = () => {
             colors={[[125, 211, 252]]}
           />
         </Card>
+        
       </div>
+      </motion.div>
       <div className="relative z-[20] px-[5px]">
   <div className="thefont text-[20px] font-medium text-center text-gray-300">
     Building scalable, efficient, and user-friendly solutions with a structured approach.
