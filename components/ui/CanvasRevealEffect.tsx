@@ -219,8 +219,12 @@ interface Uniform {
 }
 
 interface PreparedUniforms {
-  [key: string]: { value: any; type?: string };
+  [key: string]: { 
+    value: number | number[] | THREE.Vector2 | THREE.Vector3 | THREE.Vector4 | THREE.Matrix4 | THREE.Vector3[];
+    type?: string;
+  };
 }
+
 
 const getUniforms = (uniforms: Record<string, Uniform>, size: { width: number; height: number }) => {
   const preparedUniforms: PreparedUniforms = {};
