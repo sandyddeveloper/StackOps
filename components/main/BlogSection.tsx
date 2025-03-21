@@ -1,4 +1,3 @@
-import Image from "next/image";
 import BlogText from "../sub/BlogText";
 import { BlogScroll } from "../sub/BlogContainer";
 
