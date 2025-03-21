@@ -4,7 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "../ui/CanvasRevealEffect";
 import ApproachText from "../sub/ApproachText";
 
-
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+  className?: string;
+}
 const Approach = () => {
   return (
     <section className="w-full py-20">
@@ -154,7 +156,7 @@ const AceternityIcon = ({ order }: { order: string }) => {
   );
 };
 
-export const Icon = ({ className, ...rest }: any) => {
+export const Icon = ({ className, ...rest }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
