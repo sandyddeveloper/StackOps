@@ -179,7 +179,6 @@ type Uniforms = {
 };
 const ShaderMaterial = ({
   source,
-  uniforms,
   maxFps = 60,
 }: {
   source: string;
@@ -199,10 +198,12 @@ const ShaderMaterial = ({
     }
     lastFrameTime = timestamp;
 
-    const material: any = ref.current.material;
-    const timeLocation = material.uniforms.u_time;
-    timeLocation.value = timestamp;
+    const material = ref.current.material as THREE.ShaderMaterial; // ✅ Correct typing
+    if (material.uniforms.u_time) {
+      material.uniforms.u_time.value = timestamp;
+    }
   });
+ 
 
 
 type UniformType =
