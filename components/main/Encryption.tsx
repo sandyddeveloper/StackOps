@@ -16,9 +16,10 @@ const Encryption = () => {
           className="text-[40px] font-medium text-center text-gray-200"
         >
           <EncryptionText />
-          <h1 className="text-[40px] font-semibold  mx-auto text-center  relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-        Build amazing websites With <br /> at <Cover>Performance & Security</Cover>
-      </h1>
+          <h1 className="text-[28px] sm:text-[32px] md:text-[40px] font-semibold mx-auto text-center relative z-20 py-4 sm:py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
+            Build amazing websites With <br />
+            at <Cover>Performance & Security</Cover>
+          </h1>
         </motion.div>
       </div>
 
