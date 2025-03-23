@@ -1,3 +1,4 @@
+"use client"; 
 import { ArrowRight, Github } from "lucide-react";
 
 const handleHireMeClick = () => {

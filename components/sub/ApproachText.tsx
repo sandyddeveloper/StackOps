@@ -27,7 +27,7 @@ const ApproachText = () => {
 
       <motion.div
         variants={slideInFromRight(0.5)}
-        className='thefont text-[20px] text-gray-200 mb-10 mt-[10px] text-center'
+        className='thefont text-[20px] text-gray-200  mt-[10px] text-center'
       >
         A structured yet flexible process, ensuring clarity, creativity, and efficiency in every project.
       </motion.div>

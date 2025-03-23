@@ -120,7 +120,6 @@ const ContactForm: React.FC = () => {
         for detail, excellent problem-solving skills, and a love for coding.
       </p>
 
-      {/* Form */}
       <form className="mt-8 w-full  z-50" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row gap-4">
           <input

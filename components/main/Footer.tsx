@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import { RxDiscordLogo, RxGithubLogo } from "react-icons/rx";
 import { FaTelegramPlane, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -7,9 +8,11 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { RiGlobalFill } from "react-icons/ri";
 
 const Footer = () => {
+  const [year, setYear] = useState<number>(new Date().getFullYear());
+
   return (
     <footer className="w-full h-full z-50 bg-transparent text-gray-400 shadow-lg p-[15px]">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left"> 
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
         <div>
           <h3 className="text-lg font-semibold mb-4 text-white">Community & Chat</h3>
           <ul className="space-y-3">
@@ -20,13 +23,13 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" className="flex hover:text-white items-center justify-center md:justify-start space-x-2  transition cursor-pointer">
+              <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" className="flex hover:text-white items-center justify-center md:justify-start space-x-2 transition cursor-pointer">
                 <FaTelegramPlane className="text-xl" />
                 <span>Telegram</span>
               </a>
             </li>
             <li>
-              <a href="https://github.com/sandyddeveloper" target="_blank" rel="noopener noreferrer" className="flex hover:text-white items-center justify-center md:justify-start space-x-2  transition cursor-pointer">
+              <a href="https://github.com/sandyddeveloper" target="_blank" rel="noopener noreferrer" className="flex hover:text-white items-center justify-center md:justify-start space-x-2 transition cursor-pointer">
                 <RxGithubLogo className="text-xl" />
                 <span>GitHub</span>
               </a>
@@ -38,7 +41,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4 text-white">Social Media</h3>
           <ul className="space-y-3">
             <li>
-              <a href="www.linkedin.com/in/santhoshraj-dev" target="_blank" rel="noopener noreferrer" className="flex hover:text-white items-center justify-center md:justify-start space-x-2 transition cursor-pointer">
+              <a href="https://www.linkedin.com/in/santhoshraj-dev" target="_blank" rel="noopener noreferrer" className="flex hover:text-white items-center justify-center md:justify-start space-x-2 transition cursor-pointer">
                 <FaLinkedin className="text-xl" />
                 <span>LinkedIn</span>
               </a>
@@ -98,7 +101,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-            <a href="/santhoshraj's resume.pdf" target="_blank" rel="noopener noreferrer" download className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition cursor-pointer">
+              <a href="/santhoshraj_resume.pdf" target="_blank" rel="noopener noreferrer" download className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition cursor-pointer">
                 <IoDocumentTextOutline className="text-xl" />
                 <span>Resume</span>
               </a>
@@ -108,7 +111,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-10 text-center text-sm text-gray-500">
-        &copy; {new Date().getFullYear()} STACKOPS|TEXSON. All rights reserved.
+        &copy; {year} STACKOPS | TEXSON. All rights reserved.
       </div>
     </footer>
   );
