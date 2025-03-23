@@ -93,6 +93,7 @@ const HeroContent = () => {
           height={650}
           width={650}
           className="max-w-[90%] md:max-w-[650px]"
+          priority={true}
         />
       </motion.div>
     </motion.div>
