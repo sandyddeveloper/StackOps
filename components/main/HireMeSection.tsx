@@ -18,7 +18,7 @@ export function HireMeSection() {
 </div>
 
         <h2 className="text-white text-3xl md:text-5xl font-bold text-center">
-          Let's Work Together!
+          Let&apos;s Work Together!
         </h2>
         <p className="text-white text-base md:text-xl mt-4 text-center">
           Need a skilled web developer? I build fast, modern, and scalable apps.

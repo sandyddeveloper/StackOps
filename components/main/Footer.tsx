@@ -8,7 +8,7 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { RiGlobalFill } from "react-icons/ri";
 
 const Footer = () => {
-  const [year, setYear] = useState<number>(new Date().getFullYear());
+  const [year] = useState<number>(new Date().getFullYear());
 
   return (
     <footer className="w-full h-full z-50 bg-transparent text-gray-400 shadow-lg p-[15px]">
