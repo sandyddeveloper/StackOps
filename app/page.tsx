@@ -7,6 +7,7 @@ import Hero from "@/components/main/Hero";
 import { HireMeSection } from "@/components/main/HireMeSection";
 import Projects from "@/components/main/Projects";
 import Skills from "@/components/main/Skills";
+import TextHoverSection from "@/components/main/TextHoverSection";
 
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
     <Projects />
     <BlogSection />
     <HireMeSection />
+    <TextHoverSection />
     <Contact />
     <Footer />
   </div>
