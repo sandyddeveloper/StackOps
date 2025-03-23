@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from "react";
+import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "../ui/CanvasRevealEffect";
 import ApproachText from "../sub/ApproachText";
