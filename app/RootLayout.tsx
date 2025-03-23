@@ -1,13 +1,14 @@
 
 "use client";
 import { Inter } from "next/font/google";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/main/Navbar";
 import StarsCanvas from "@/components/main/Starbackground";
 import ScrollToTop from "@/components/sub/ScrollToTop";
 import Chatbot from "@/components/sub/Chatbot";
+import Loader from "@/components/sub/Loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +16,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const defaultTitle = "Santhosh Raj - A Full-Stack Developer";
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
     const attentionTitles = [
       "Check out my portfolio",
       "Let's Build Something Awesome Together!",
@@ -84,12 +90,20 @@ export default function RootLayout({
         <title>{defaultTitle}</title>
       </head>
       <body className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}>
-        <StarsCanvas />
-        <Navbar />
-        {children}
-        <ScrollToTop />
-        <Chatbot />
-        <Script src="https://cdn.jsdelivr.net/npm/disable-devtool@latest" strategy="afterInteractive" />
+        {isLoading ? (
+          <>
+          <Loader />
+          </>
+        ) : (
+          <>
+            <StarsCanvas />
+            <Navbar />
+            {children}
+            <ScrollToTop />
+            <Chatbot />
+            <Script src="https://cdn.jsdelivr.net/npm/disable-devtool@latest" strategy="afterInteractive" />
+          </>
+        )}
       </body>
     </html>
   );
