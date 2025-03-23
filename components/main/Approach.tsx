@@ -1,6 +1,6 @@
 "use client"
 import React, { useRef } from "react";
-import { AnimatePresence, motion, useInView  } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "../ui/CanvasRevealEffect";
 import ApproachText from "../sub/ApproachText";
 import { LampContainer } from "../ui/Lamp";
@@ -9,16 +9,13 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
 }
 const Approach = () => {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   return (
-    <section ref={sectionRef} className="w-full h-full">
+    <section  className="w-full h-full">
       <LampContainer>
       <ApproachText />
       </LampContainer>
       <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.6 }}
           >
       <div className="flex pb-10 flex-col lg:flex-row items-center justify-center w-full gap-4">
