@@ -57,7 +57,7 @@ export const HeroParallax = ({
   return (
     <div
   ref={ref}
-  className="h-[300vh] py-40 max-w-full overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] z-[22]"
+  className="h-[300vh] py-40 max-w-full overflow-x-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] z-[22]"
 >
      
   <Header />
@@ -107,11 +107,11 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-<div className="max-w-7xl relative mx-auto px-6 sm:px-8 md:px-12 py-16 md:py-40 w-full text-center md:text-left">
+<div className="max-w-7xl relative mx-auto px-[340px] sm:px-8 md:px-12 py-16 md:py-40 w-full text-center md:text-left ">
   <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold dark:text-white leading-tight">
     Showcasing My <br className="hidden md:block" /> Best Work
   </h1>
-  <p className="max-w-2xl text-sm sm:text-base md:text-xl mt-6 sm:mt-8 dark:text-neutral-200">
+  <p className="max-w-2xl text-sm sm:text-base md:text-xl mt-6  dark:text-neutral-200 ">
     A collection of my most exciting and innovative projects, built using modern 
     technologies like Next.js, Django, React, and MySQL. Each project reflects 
     my passion for problem-solving, clean design, and scalable solutions.
@@ -141,7 +141,7 @@ export const ProductCard = ({
           y: -20,
         }}
         key={product.title}
-        className="group/product relative shrink-0 h-64 w-44 sm:h-72 sm:w-60 md:h-96 md:w-[30rem]"
+        className="group/product relative shrink-0 h-64 w-44 sm:h-72 sm:w-60 md:h-96 md:w-[30rem] overflow-x-hidden"
       >
         <Link
           href={product.link}

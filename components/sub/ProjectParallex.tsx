@@ -4,7 +4,7 @@ import { HeroParallax } from "../ui/HeroParallax";
 
 export function HeroParallaxDemo() {
   return (
-    <div className="px-2 sm:px-4 md:px-8 lg:px-16">
+    <div className="px-2 sm:px-4 md:px-8 lg:px-16 overflow-x-hidden">
       <HeroParallax products={products} />
     </div>
   );
