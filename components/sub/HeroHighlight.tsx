@@ -8,7 +8,7 @@ import { SparklesCore } from "../ui/sparkles";
 export function HeroShowcase() {
   return (
     <div className="relative w-full bg-black overflow-hidden flex flex-col items-center justify-center">
-      <div className="h-[40rem] w-full flex flex-col items-center justify-center overflow-hidden">
+      <div className="h-[200px] pt-[100px] w-full flex flex-col items-center justify-center overflow-hidden">
         <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
           StackOps
         </h1>

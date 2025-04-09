@@ -49,38 +49,38 @@ export default function RootLayout({
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    const disableDevTools = () => {
-      const preventRightClick = (event: MouseEvent) => event.preventDefault();
-      const preventKeyShortcuts = (event: KeyboardEvent) => {
-        if (
-          event.ctrlKey &&
-          ["u", "s", "p", "Shift"].includes(event.key.toLowerCase())
-        ) {
-          event.preventDefault();
-        }
-        if (
-          event.key === "F12" ||
-          (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(event.key))
-        ) {
-          event.preventDefault();
-        }
-      };
+    // const disableDevTools = () => {
+    //   const preventRightClick = (event: MouseEvent) => event.preventDefault();
+    //   const preventKeyShortcuts = (event: KeyboardEvent) => {
+    //     if (
+    //       event.ctrlKey &&
+    //       ["u", "s", "p", "Shift"].includes(event.key.toLowerCase())
+    //     ) {
+    //       event.preventDefault();
+    //     }
+    //     if (
+    //       event.key === "F12" ||
+    //       (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(event.key))
+    //     ) {
+    //       event.preventDefault();
+    //     }
+    //   };
 
-      document.addEventListener("contextmenu", preventRightClick);
-      document.addEventListener("keydown", preventKeyShortcuts);
+    //   document.addEventListener("contextmenu", preventRightClick);
+    //   document.addEventListener("keydown", preventKeyShortcuts);
 
-      return () => {
-        document.removeEventListener("contextmenu", preventRightClick);
-        document.removeEventListener("keydown", preventKeyShortcuts);
-      };
-    };
+    //   return () => {
+    //     document.removeEventListener("contextmenu", preventRightClick);
+    //     document.removeEventListener("keydown", preventKeyShortcuts);
+    //   };
+    // };
 
-    const cleanupDevTools = disableDevTools();
+    // const cleanupDevTools = disableDevTools();
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       clearInterval(interval);
-      cleanupDevTools();
+      // cleanupDevTools();
     };
   }, []);
 

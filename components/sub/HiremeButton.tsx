@@ -2,6 +2,7 @@
 import { ArrowRight, Github } from "lucide-react";
 
 const handleHireMeClick = () => {
+  console.log("Hire Me button clicked");
   const email = "santhoshrajk1812@gmail.com";
   const subject = encodeURIComponent("Hiring Inquiry - Let's Work Together!");
   const body = encodeURIComponent(
@@ -11,8 +12,10 @@ const handleHireMeClick = () => {
 };
 
 const handleGitHubClick = () => {
+  console.log("GitHub button clicked");
   window.open("https://github.com/sandyddeveloper", "_blank");
 };
+
 
 export const HireMeButton = () => (
   <button 
